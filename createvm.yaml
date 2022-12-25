@@ -1,0 +1,56 @@
+# Here is an example of YAML code that you can use to create an Azure virtual machine (VM) using Azure Resource Manager and Azure CLI:
+
+# create a resource group
+az group create --name myResourceGroup --location eastus
+
+# create a virtual network
+az network vnet create \
+  --name myVnet \
+  --resource-group myResourceGroup \
+  --location eastus \
+  --address-prefixes 10.0.0.0/16 \
+  --subnet-name mySubnet \
+  --subnet-prefix 10.0.1.0/24
+
+# create a public IP address
+az network public-ip create \
+  --name myPublicIP \
+  --resource-group myResourceGroup \
+  --location eastus \
+  --allocation-method dynamic
+
+# create a network security group
+az network nsg create \
+  --name myNetworkSecurityGroup \
+  --resource-group myResourceGroup \
+  --location eastus
+
+# create a virtual network card and associate with public IP address and NSG
+az network nic create \
+  --name myNic \
+  --resource-group myResourceGroup \
+  --location eastus \
+  --vnet-name myVnet \
+  --subnet mySubnet \
+  --public-ip-address myPublicIP \
+  --network-security-group myNetworkSecurityGroup
+
+# create a VM with the network interface
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --location eastus \
+  --nics myNic \
+  --image UbuntuLTS \
+  --generate-ssh-keys
+  
+  
+  
+  
+ # This code will create a resource group, a virtual network with a subnet, a public IP address, a network security group, and a virtual network interface card (NIC).
+ #The NIC is associated with the public IP address and network security group, and is then used to create the VM. 
+ #The VM is created using the Ubuntu Long-Term Support (LTS) image, and the --generate-ssh-keys flag will generate an SSH key pair for you to use to securely connect to the VM.
+
+#You can use this code as a starting point and customize it to meet your specific needs. For example, you can specify different values for the location, resource group name, VM name, and other parameters. You can also specify different OS images or configure additional resources, such as disks or extensions.
+
+# I hope this helps! Let me know if you have any questions.
