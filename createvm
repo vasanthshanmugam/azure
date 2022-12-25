@@ -43,3 +43,14 @@ az vm create \
   --nics myNic \
   --image UbuntuLTS \
   --generate-ssh-keys
+  
+  
+  
+  
+ # This code will create a resource group, a virtual network with a subnet, a public IP address, a network security group, and a virtual network interface card (NIC).
+ #The NIC is associated with the public IP address and network security group, and is then used to create the VM. 
+ #The VM is created using the Ubuntu Long-Term Support (LTS) image, and the --generate-ssh-keys flag will generate an SSH key pair for you to use to securely connect to the VM.
+
+#You can use this code as a starting point and customize it to meet your specific needs. For example, you can specify different values for the location, resource group name, VM name, and other parameters. You can also specify different OS images or configure additional resources, such as disks or extensions.
+
+# I hope this helps! Let me know if you have any questions.
